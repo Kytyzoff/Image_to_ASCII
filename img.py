@@ -15,9 +15,9 @@ def img_to_ascii(img_path, output_path):
     resized_image = resized_image.convert('L')
     pix = resized_image.load()
 
-    f = open(output_path+'\image.txt','w') # preparing txt file
+    # f = open(output_path+'\image.txt','w') # preparing txt file
     symbols = ['@','O','c','+','/','*','.',' '] # the alphabet
-
+    buffer = ''
 
     # writing to the txt file
     for i in range(height_resized):
@@ -25,9 +25,12 @@ def img_to_ascii(img_path, output_path):
             a = pix[j, i]
             # choosing range of brightness for each symbol in alphabet
             n = 255 // int(len(symbols)-1)
-            f.write(symbols[(a//n)])
-        f.write('\n')
-    f.close()
+            buffer = buffer + symbols[a//n]
+        buffer = buffer +('\n')
+
+    # writing to a file
+    with open(output_path+'\image.txt','w') as f:
+        f.write(bufer)
 
 if __name__ == '__main__':
 
