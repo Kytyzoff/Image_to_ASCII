@@ -2,7 +2,7 @@ from __future__ import print_function, division
 
 from PIL import Image
 
-def img_to_ascii(img_path):
+def img_to_ascii(img_path, output_path):
 
     # Initializing image
     image = Image.open(img_path)
@@ -15,7 +15,7 @@ def img_to_ascii(img_path):
     resized_image = resized_image.convert('L')
     pix = resized_image.load()
 
-    f = open('image.txt','w') # preparing txt file
+    f = open(output_path+'\image.txt','w') # preparing txt file
     symbols = ['@','O','c','+','/','*','.',' '] # the alphabet
 
 
@@ -30,7 +30,15 @@ def img_to_ascii(img_path):
     f.close()
 
 if __name__ == '__main__':
+
     import sys
+    import os.path
+
     img_path = sys.argv[1]
-    print(img_path)
-    img_to_ascii(img_path)
+
+    # Initializing output path
+    output_path = os.path.dirname(img_path)
+    print('Output path: '+output_path)
+
+    img_to_ascii(img_path, output_path)
+
