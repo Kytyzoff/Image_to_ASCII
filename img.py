@@ -3,7 +3,6 @@ def img_to_ascii(img_path):
     from PIL import Image
 
     image = Image.open(img_path)
-    #image = Image.open("img.jpg")
     width = image.size[0]
     height = image.size[1]
     width_resized = width//3
@@ -23,6 +22,7 @@ def img_to_ascii(img_path):
     f.close()
 
 if __name__ == '__main__':
-    img_path = input()
+    import sys
+    img_path = sys.argv[1]
     print(img_path)
     img_to_ascii(img_path)
