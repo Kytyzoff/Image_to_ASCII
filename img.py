@@ -2,6 +2,8 @@ from __future__ import print_function, division
 
 from PIL import Image
 
+symbols = ['@' ,'O' ,'c' ,'+' ,'/' ,'*' ,';' ,' ']
+
 def img_to_ascii(img_path, output_path):
 
     # Initializing image
@@ -10,13 +12,12 @@ def img_to_ascii(img_path, output_path):
 
     # resizing image
     width_resized = width//3
-    height_resized = height//3
+    height_resized = height//4
     resized_image = image.resize((width_resized, height_resized), Image.ANTIALIAS)
     resized_image = resized_image.convert('L')
     pix = resized_image.load()
 
-    # f = open(output_path+'\image.txt','w') # preparing txt file
-    symbols = ['@','O','c','+','/','*','.',' '] # the alphabet
+    # preparing txt file
     buffer = ''
 
     # writing to the txt file
@@ -24,13 +25,13 @@ def img_to_ascii(img_path, output_path):
         for j in range(width_resized):
             a = pix[j, i]
             # choosing range of brightness for each symbol in alphabet
-            n = 255 // int(len(symbols)-1)
-            buffer = buffer + symbols[a//n]
+            n = 255 // int(len(symbols) -1)
+            buffer = buffer + symbols[a // n]
         buffer = buffer +('\n')
 
     # writing to a file
-    with open(output_path+'\image.txt','w') as f:
-        f.write(bufer)
+    with open(output_path,'w') as f:
+        f.write(buffer)
 
 if __name__ == '__main__':
 
@@ -40,8 +41,8 @@ if __name__ == '__main__':
     img_path = sys.argv[1]
 
     # Initializing output path
-    output_path = os.path.dirname(img_path)
-    print('Output path: '+output_path)
+    output_path = os.path.join(os.path.dirname(img_path), 'image.txt')
+    print('Output path: ',output_path)
 
     img_to_ascii(img_path, output_path)
 
