@@ -2,7 +2,7 @@ from __future__ import print_function, division
 
 from PIL import Image
 
-symbols = ['@' ,'O' ,'c' ,'+' ,'/' ,'*' ,';' ,' ']
+symbols = ['@' ,'O' ,'c' ,'+' ,'/' ,'*' ,';' ,' '] # the alphabet
 
 def img_to_ascii(img_path, output_path):
 
@@ -24,13 +24,13 @@ def img_to_ascii(img_path, output_path):
     for i in range(height_resized):
         for j in range(width_resized):
             a = pix[j, i]
-            # choosing range of brightness for each symbol in alphabet
+            # choosing range of brightness for each symbol in the alphabet
             n = 255 // int(len(symbols) -1)
             buffer = buffer + symbols[a // n]
         buffer = buffer +('\n')
 
     # writing to a file
-    with open(output_path,'w') as f:
+    with open(output_path, 'w') as f:
         f.write(buffer)
 
 if __name__ == '__main__':
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     img_path = sys.argv[1]
 
     # Initializing output path
-    output_path = os.path.join(os.path.dirname(img_path), 'image.txt')
+    output_path = os.path.splitext(img_path)[0] + '.txt'
     print('Output path: ',output_path)
 
     img_to_ascii(img_path, output_path)
