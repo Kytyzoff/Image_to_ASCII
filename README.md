@@ -7,8 +7,8 @@ python img.py img.jpg
 ```
 The .txt file will be created at the same directory with the same name
 ### Results review
-<p><img src="D:\Programming\client-server\img.jpg" width="200" height="250">
-<img src="D:\Programming\client-server\txt_image.png" width="200" height="250">
+<p><img src="D:\Programming\client-server\Img_to_ascii\scr\img.jpg" width="200" height="250">
+<img src="D:\Programming\client-server\Img_to_ascii\scr\txt_image.png" width="200" height="250">
 <figcaption>Eye in zoom</figcaption>
-<img src="D:\Programming\client-server\eye.png" width="200" height="250" alt="eye">
+<img src="D:\Programming\client-server\Img_to_ascii\scr\eye.png" width="200" height="250" alt="eye">
 
